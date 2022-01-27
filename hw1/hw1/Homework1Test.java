@@ -222,6 +222,10 @@ public class Homework1Test {
         test_isPrime_negativeInput();
         test_isPrime_primeInput();
         test_isPrime_compositeInput();
+        // nameFormatter tests
+        test_nameFormatter_emptyInput();
+        test_nameFormatter_oneWordOnlyName();
+        test_nameFormatter_firstAndLast();
 
         System.out.println("------- TESTS COMPLETED ------");
 

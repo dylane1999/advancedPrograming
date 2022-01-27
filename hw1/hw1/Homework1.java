@@ -160,12 +160,12 @@ public class Homework1 {
         String lastName = splitName[1];
         String initial = String.valueOf(firstName.charAt(0)) + String.valueOf(lastName.charAt(0));
         Integer numChars = firstName.length() + lastName.length();
-        //  build name string
+        // build name string
         StringBuilder formattedName = new StringBuilder();
-        formattedName.append(String.format("The full name is: %s, %s.", lastName, firstName));
-        formattedName.append(String.format("The initial is: %s.", initial));
-        formattedName.append(String.format("The name contains %d characters, excluding the space.", numChars));
-        formattedName.append(String.format("The initial is: %s.", firstName));
+        formattedName.append(String.format("The full name is: %s, %s.\n", lastName, firstName));
+        formattedName.append(String.format("The initial is: %s.\n", initial));
+        formattedName.append(String.format("The name contains %d characters, excluding the space.\n", numChars));
+        formattedName.append(String.format("Welcome, %s!", firstName));
         return formattedName.toString();
 
     }
