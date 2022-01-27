@@ -155,10 +155,17 @@ public class Homework1 {
         if (splitName.length != 2) {
             throw new IllegalArgumentException("not in first last format");
         }
-        // get name
+        // get name and name info
         String firstName = splitName[0];
         String lastName = splitName[1];
+        String initial = String.valueOf(firstName.charAt(0)) + String.valueOf(lastName.charAt(0));
+        Integer numChars = firstName.length() + lastName.length();
+        //  build name string
         StringBuilder formattedName = new StringBuilder();
+        formattedName.append(String.format("The full name is: %s, %s.", lastName, firstName));
+        formattedName.append(String.format("The initial is: %s.", initial));
+        formattedName.append(String.format("The name contains %d characters, excluding the space.", numChars));
+        formattedName.append(String.format("The initial is: %s.", firstName));
         return formattedName.toString();
 
     }
