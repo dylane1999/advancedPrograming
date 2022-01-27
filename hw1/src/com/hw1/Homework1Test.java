@@ -1,4 +1,4 @@
-package hw1;
+package com.hw1;
 
 import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -9,12 +9,14 @@ import org.junit.jupiter.api.Test;
 
 public class Homework1Test {
 
+    @Test
     public static void test_insertAfterVowels_nonLowercaseBasestring() {
         String baseString = "HELLO";
         String insertString = "insert";
         assertThrows(RuntimeException.class, () -> Homework1.insertAfterVowels(baseString, insertString));
     }
 
+    @Test
     public static void test_insertAfterVowels_happyPath() {
         String baseString = "hello";
         String insertString = "XYZ";
@@ -23,6 +25,7 @@ public class Homework1Test {
         assertEquals(expectedResult, actualResult, "check that we get the correct substitution");
     }
 
+    @Test
     public static void test_insertAfterVowels_noInputString() {
         String baseString = "hello";
         String insertString = "";
@@ -30,6 +33,7 @@ public class Homework1Test {
         assertEquals(baseString, actualResult, "check that we get the correct substitution");
     }
 
+    @Test
     public static void test_insertAfterVowels_noBaseString() {
         String baseString = "";
         String insertString = "XYZ";
@@ -38,6 +42,7 @@ public class Homework1Test {
         assertEquals(expectedResult, actualResult, "check that we get the correct substitution");
     }
 
+    @Test
     public static void test_addInString_emptyString() {
         String input = "";
         Integer expectedResult = 0;
@@ -45,6 +50,7 @@ public class Homework1Test {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Test
     public static void test_addInString_StringHasNoNumbers() {
         String input = "hello";
         Integer expectedResult = 0;
@@ -53,6 +59,7 @@ public class Homework1Test {
 
     }
 
+    @Test
     public static void test_addInString_onlyNumbers() {
         String input = "123";
         Integer expectedResult = 6;
@@ -60,6 +67,7 @@ public class Homework1Test {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Test
     public static void test_addInString_happyPath() {
         String input = "he12l41o5";
         Integer expectedResult = 13;
@@ -67,12 +75,14 @@ public class Homework1Test {
         assertEquals(expectedResult, actualResult);
     }
 
+    @Test
     public static void test_deleteByIndex_outOfRange() {
         String inputString = "hello";
         Integer index = 1000;
         assertThrows(IndexOutOfBoundsException.class, () -> Homework1.deleteByIndex(inputString, index));
     }
 
+    @Test
     public static void test_deleteByIndex_happyPath() {
         String inputString = "hello";
         String expectedOutput = "helo";
@@ -81,42 +91,49 @@ public class Homework1Test {
         assertEquals(expectedOutput, actualResult);
     }
 
+    @Test
     public static void test_deleteByIndex_emptyString() {
         String inputString = "";
         Integer index = 1;
         assertThrows(IndexOutOfBoundsException.class, () -> Homework1.deleteByIndex(inputString, index));
     }
 
+    @Test
     public static void test_passwordChecker_tooShort() {
         String password = "Fj5!";
         boolean isValid = Homework1.passwordChecker(password);
         assertFalse(isValid);
     }
 
+    @Test
     public static void test_passwordChecker_noNumbers() {
         String password = "gkdHITIUjasdfo!";
         boolean isValid = Homework1.passwordChecker(password);
         assertFalse(isValid);
     }
 
+    @Test
     public static void test_passwordChecker_noCapitals() {
         String password = "lkjadfkljadkf09435904354903j!";
         boolean isValid = Homework1.passwordChecker(password);
         assertFalse(isValid);
     }
 
+    @Test
     public static void test_passwordChecker_happyPath() {
         String password = "afjDFt848hIU!";
         boolean isValid = Homework1.passwordChecker(password);
         assertTrue(isValid);
     }
 
+    @Test
     public static void test_passwordChecker_emptyPassword() {
         String password = "!";
         boolean isValid = Homework1.passwordChecker(password);
         assertFalse(isValid);
     }
 
+    @Test
     public static void test_countTriple_emptyInput() {
         String inputString = "";
         Integer expectedNumTriples = 0;
@@ -124,6 +141,7 @@ public class Homework1Test {
         assertEquals(expectedNumTriples, actualNumTriples);
     }
 
+    @Test
     public static void test_countTriple_happyPath() {
         String inputString = "xxxabyyyycd";
         Integer expectedNumTriples = 3;
@@ -132,6 +150,7 @@ public class Homework1Test {
 
     }
 
+    @Test
     public static void test_countTriple_TripleChain() {
         String inputString = "iiiiiiii"; // 8 i's in a row -> 1 + (8-3) -> 6 triples
         Integer expectedNumTriples = 6;
@@ -140,6 +159,7 @@ public class Homework1Test {
 
     }
 
+    @Test
     public static void test_countTriple_noTriples() {
         String inputString = "hello there";
         Integer expectedNumTriples = 0;
@@ -151,38 +171,45 @@ public class Homework1Test {
     // A number is prime if it cannot evenly be divided by anything between 1 and
     // itself, except for 1 and itself. If the input is 0 or negative, throw an
     // IllegalArgumentException.
+    @Test
     public static void test_isPrime_zeroInput() {
         Integer input = 0;
         assertThrows(IllegalArgumentException.class, () -> Homework1.isPrime(input));
     }
 
+    @Test
     public static void test_isPrime_negativeInput() {
         Integer input = -5;
         assertThrows(IllegalArgumentException.class, () -> Homework1.isPrime(input));
     }
 
+    @Test
     public static void test_isPrime_primeInput() {
         Integer input = 5;
         boolean isPrime = Homework1.isPrime(input);
         assertTrue(isPrime);
     }
 
+    @Test
     public static void test_isPrime_compositeInput() {
         Integer input = 4;
         boolean isPrime = Homework1.isPrime(input);
         assertFalse(isPrime);
     }
 
+    @Test
     public static void test_nameFormatter_emptyInput() {
         String inputName = "";
-        assertThrows(IllegalArgumentException.class, ()-> Homework1.nameFormatter(inputName));
+        assertThrows(IllegalArgumentException.class, () -> Homework1.nameFormatter(inputName));
     }
 
+    @Test
     public static void test_nameFormatter_oneWordOnlyName() {
         String inputName = "Stephen";
-        assertThrows(IllegalArgumentException.class, ()-> Homework1.nameFormatter(inputName));
+        assertThrows(IllegalArgumentException.class, () -> Homework1.nameFormatter(inputName));
     }
 
+    @Test
     public static void test_nameFormatter_firstAndLast() {
         String inputName = "Stephen Strange";
         String expectedOutput = String.join("\n", "The full name is: Strange, Stephen.", "The initial is: SS.",

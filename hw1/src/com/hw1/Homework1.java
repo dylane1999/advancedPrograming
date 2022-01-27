@@ -1,4 +1,4 @@
-package hw1;
+package com.hw1;
 
 import java.util.Arrays;
 import java.util.HashSet;
