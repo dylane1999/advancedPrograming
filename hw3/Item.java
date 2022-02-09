@@ -34,7 +34,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return String.format("%s (%d calories)", this.getName(), this.getCalories());
+        return String.format("%s (%d calories)\n", this.getName(), this.getCalories());
     }
 
 

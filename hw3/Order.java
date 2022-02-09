@@ -156,8 +156,10 @@ public class Order {
         } else if (item instanceof Drink) {
             return String.format("(D)%s         $%f", item.getName(), item.getPrice());
 
+        } else {
+            return String.format("%s         $%f", item.getName(), item.getPrice());
+
         }
-        throw new RuntimeException("item is not food or drink");
     }
 
 }

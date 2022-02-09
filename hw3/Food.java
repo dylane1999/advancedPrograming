@@ -28,7 +28,9 @@ public class Food extends Item {
 
     @Override
     public String toString() {
-        return String.format("%s  (%d calories)        $%f\n%s  Spicy: ", getName(), getCalories(), getPrice(), getVeganString(), getSpicyString());
+        String foodString = super.toString();
+        foodString += getSpicyString();
+        return foodString;
     }
 
     private String getVeganString(){

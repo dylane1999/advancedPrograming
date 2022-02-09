@@ -18,9 +18,9 @@ public class Drink extends Item {
 
     @Override
     public String toString() {
-        String drinkString = String.format("%s (%d calories)		%f", getName(), getCalories(), getPrice());
+        String drinkString = super.toString();
         if (getIsAlcoholic()) {
-            drinkString += "\n*Contains Alcohol";
+            drinkString += "*Contains Alcohol";
         }
         return drinkString;
     }
