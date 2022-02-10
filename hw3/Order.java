@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Order {
     // Here is an example of numOfGuests: 5
     // Here is an example of isTakeOut: true
 
+    private DecimalFormat df = new DecimalFormat("#.00");
     private String server;
     private Integer numOfGuests;
     private boolean isTakeOut;
@@ -94,14 +96,15 @@ public class Order {
     // Coke
     // Hamburger
     // Manhattan
-    public void printWeightWatcherItems() {
+    public String printWeightWatcherItems() {
         String lowCalorieItems = "Items with calories 500 or below:\n";
         for (Item item : orderList) {
             if (item.getCalories() <= 500) {
-                lowCalorieItems += String.format("       %s\n", item.getCalories());
+                lowCalorieItems += String.format("        %s\n", item.getName());
             }
         }
         System.out.println(lowCalorieItems);
+        return lowCalorieItems;
     }
 
     // This method splits the bill among the number of guests in this Order and
@@ -113,7 +116,9 @@ public class Order {
     private float getTotalOwed() {
         float totalOwed = 0;
         for (Item item : orderList) {
-            totalOwed += item.getPrice();
+            if (item != null) {
+                totalOwed += item.getPrice();
+            }
         }
         return totalOwed;
     }
@@ -137,27 +142,30 @@ public class Order {
         }
         recipt.append("Item	       Price\n");
         for (Item item : orderList) {
-            recipt.append(getItemAsString(item)).append("\n");
+            if (item != null) {
+                recipt.append(getItemAsString(item)).append("\n");
+            }
         }
+        recipt.append("\n");
         double totalOwed = getTotalOwed();
-        recipt.append("Subtotal         ").append("$").append(totalOwed).append("\n");
+        recipt.append("Subtotal         ").append("$").append(df.format(totalOwed)).append("\n");
         if (!isTakeOut) {
-            recipt.append("Tip          ").append("$").append(totalOwed * .15).append("\n");
+            recipt.append("Tip          ").append("$").append(df.format(totalOwed * .15)).append("\n");
             totalOwed += (totalOwed * .15);
 
         }
-        recipt.append("Total Due            ").append("$").append(totalOwed).append("\n");
+        recipt.append("Total Due            ").append("$").append(df.format(totalOwed));
         return recipt.toString();
     }
 
     private String getItemAsString(Item item) {
         if (item instanceof Food) {
-            return String.format("(F)%s         $%f", item.getName(), item.getPrice());
+            return String.format("(F)%s         $%s", item.getName(), df.format(item.getPrice()));
         } else if (item instanceof Drink) {
-            return String.format("(D)%s         $%f", item.getName(), item.getPrice());
+            return String.format("(D)%s         $%s", item.getName(), df.format(item.getPrice()));
 
         } else {
-            return String.format("%s         $%f", item.getName(), item.getPrice());
+            return String.format("%s         $%s", item.getName(), df.format(item.getPrice()));
 
         }
     }

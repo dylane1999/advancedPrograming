@@ -3,7 +3,6 @@ public class Drink extends Item {
     private boolean isAlcoholic;
 
     public boolean getIsAlcoholic() {
-        // TODO Auto-generated method stub
         return isAlcoholic;
     }
 
@@ -11,7 +10,7 @@ public class Drink extends Item {
         this.isAlcoholic = isAlcoholic;
     }
 
-    public Drink(String name, Float price, Integer calories, boolean isAlcoholic) {
+    public Drink(String name, Double price, Integer calories, boolean isAlcoholic) {
         super(name, price, calories);
         setAlcoholic(isAlcoholic);
     }

@@ -20,7 +20,7 @@ public class Food extends Item {
         this.isVegan = isVegan;
     }
 
-    public Food(String name, Float price, Integer calories, boolean isVegan, Integer spicyLevel) {
+    public Food(String name, double price, Integer calories, boolean isVegan, Integer spicyLevel) {
         super(name, price, calories);
         setIsVegan(isVegan);
         setSpicyLevel(spicyLevel);
@@ -29,8 +29,7 @@ public class Food extends Item {
     @Override
     public String toString() {
         String foodString = super.toString();
-        foodString += getSpicyString();
-        return foodString;
+        return String.format("%s\n%s   Spicy:", foodString, getVeganString(), getSpicyString());
     }
 
     private String getVeganString(){
@@ -48,7 +47,7 @@ public class Food extends Item {
             }
             return spiceStars;
         }
-        return "Not Spicy";
+        return "not spicy";
     }
 
 }
