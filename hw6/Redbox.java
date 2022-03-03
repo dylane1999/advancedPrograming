@@ -53,83 +53,81 @@ public class Redbox {
     }
 
     public void movieSearch() {
-        try (// Welcome to Redbox!
-             // Enter 1 to rent by movie title.
-             // Enter 2 to rent by year.
-             // Enter 3 to rent by genre.
-             // Enter q to quit.
-                Scanner scanner = new Scanner(System.in)) {
-            System.out.println(
-                    "\nWelcome to Redbox!\nEnter 1 to rent by movie title.\nnter 2 to rent by year.\nEnter 3 to rent by genre.\nEnter q to quit.\n");
-            String userChoice = userChoice = scanner.nextLine();
-            if (userChoice.equals("1")) {
-                System.out.println("Enter the movie title:");
-                String movieTitle = scanner.nextLine();
-                movieTitle = movieTitle.strip(); // Read user input
-                List<Movie> results = new ArrayList<>();
-                for (Movie movie : getMovies()) {
-                    if (movie.getTitle().contains(movieTitle)) {
-                        results.add(movie);
+        while(true){
+            try {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println(
+                        "\nWelcome to Redbox!\nEnter 1 to rent by movie title.\nnter 2 to rent by year.\nEnter 3 to rent by genre.\nEnter q to quit.\n");
+                String userChoice = scanner.nextLine();
+                if (userChoice.equals("1")) {
+                    System.out.println("Enter the movie title:");
+                    String movieTitle = scanner.nextLine();
+                    movieTitle = movieTitle.strip(); // Read user input
+                    List<Movie> results = new ArrayList<>();
+                    for (Movie movie : getMovies()) {
+                        if (movie.getTitle().contains(movieTitle)) {
+                            results.add(movie);
+                        }
                     }
-                }
-                System.out.println("Here are the movies we found:");
-                if (results.isEmpty()) {
-                    System.out.println("No Movies Found!");
-
+                    System.out.println("Here are the movies we found:");
+                    if (results.isEmpty()) {
+                        System.out.println("No Movies Found!");
+    
+                    } else {
+                        for (Movie movie : results) {
+                            System.out.println(movie.getTitle());
+                        }
+                    }
+    
+                } else if (userChoice.equals("2")) {
+                    System.out.println("Enter the movie year:");
+                    String line = scanner.nextLine();
+                    Integer movieYear = Integer.parseInt(line.strip()); // Read user input
+                    List<Movie> results = new ArrayList<>();
+                    for (Movie movie : getMovies()) {
+                        if (movie.getYear().equals(movieYear)) {
+                            results.add(movie);
+                        }
+                    }
+                    System.out.println("Here are the movies we found:");
+                    if (results.isEmpty()) {
+                        System.out.println("No Movies Found!");
+    
+                    } else {
+                        for (Movie movie : results) {
+                            System.out.println(movie.getTitle());
+                        }
+                    }
+    
+                } else if (userChoice.equals("3")) {
+                    System.out.println("Enter the movie genre:");
+                    String movieGenre = scanner.nextLine().strip(); // Read user input
+                    List<Movie> results = new ArrayList<>();
+                    for (Movie movie : getMovies()) {
+                        if (movie.getGenre().contains(movieGenre)) {
+                            results.add(movie);
+                        }
+                    }
+                    System.out.println("Here are the movies we found:");
+                    if (results.isEmpty()) {
+                        System.out.println("No Movies Found!");
+    
+                    } else {
+                        for (Movie movie : results) {
+                            System.out.println(movie.getTitle());
+                        }
+                    }
+    
+                } else if (userChoice.equals("q")) {
+                    scanner.close();
+                    return;
                 } else {
-                    for (Movie movie : results) {
-                        System.out.println(movie.getTitle());
-                    }
+                    System.out.println("Invalid Choice.");
                 }
-
-            } else if (userChoice.equals("2")) {
-                System.out.println("Enter the movie year:");
-                String line = scanner.nextLine();
-                Integer movieYear = Integer.parseInt(line.strip()); // Read user input
-                List<Movie> results = new ArrayList<>();
-                for (Movie movie : getMovies()) {
-                    if (movie.getYear().equals(movieYear)) {
-                        results.add(movie);
-                    }
-                }
-                System.out.println("Here are the movies we found:");
-                if (results.isEmpty()) {
-                    System.out.println("No Movies Found!");
-
-                } else {
-                    for (Movie movie : results) {
-                        System.out.println(movie.getTitle());
-                    }
-                }
-
-            } else if (userChoice.equals("3")) {
-                System.out.println("Enter the movie genre:");
-                String movieGenre = scanner.nextLine().strip(); // Read user input
-                List<Movie> results = new ArrayList<>();
-                for (Movie movie : getMovies()) {
-                    if (movie.getGenre().contains(movieGenre)) {
-                        results.add(movie);
-                    }
-                }
-                System.out.println("Here are the movies we found:");
-                if (results.isEmpty()) {
-                    System.out.println("No Movies Found!");
-
-                } else {
-                    for (Movie movie : results) {
-                        System.out.println(movie.getTitle());
-                    }
-                }
-
-            } else if (userChoice.equals("q")) {
-                scanner.close();
-                return;
-            } else {
-                System.out.println("Invalid Choice.");
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("failure in redbox program");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("failure in redbox program");
         }
 
     }
