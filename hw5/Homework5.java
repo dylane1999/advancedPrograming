@@ -1,3 +1,9 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Homework5 {
 
     public static double[] reverseNumbers(double[] input) {
@@ -29,10 +35,7 @@ public class Homework5 {
     // Write a method called usernameChecker that takes a String as its parameter
     // and returns true if the String is an acceptable username. An acceptable
     // username: has at least 5 characters; doesn’t contain special characters (@ ,
-    // # and space); and contains at least 1 uppercase, 1 lowercase and 1 digit.
-
-    // Example: if the input is "snowFlake123@ gmail", this method should return
-    // false.
+    // # and space); and contains at least 1 uppercase, 1 lowercase and 1 digit
     public static boolean usernameChecker(String username) {
         if (username.length() < 5) {
             return false;
@@ -47,8 +50,7 @@ public class Homework5 {
         for (int i = 0; i < username.length(); i++) {
             if (hasDigit && hasLowercase && hasUpercase) {
                 return true;
-            }
-            else if (Character.isLowerCase(username.charAt(i))) {
+            } else if (Character.isLowerCase(username.charAt(i))) {
                 hasLowercase = true;
             } else if (Character.isUpperCase(username.charAt(i))) {
                 hasUpercase = true;
@@ -58,6 +60,54 @@ public class Homework5 {
         }
         return hasDigit && hasLowercase && hasUpercase;
 
+    }
+
+    // Write a method called vowelCounter that takes a String as its parameter and
+    // returns an array of integers representing the counts of each vowel in the
+    // String. The array returned by your method should hold 5 elements: the first
+    // is the count of a, the second is the count of e, the third i, the fourth o,
+    // and the fifth u. Assume that the string only contains lowercase letters.
+
+    // Example: if the input is "i think, therefore i am", this method should return
+    // [1, 3, 3, 1, 0].
+
+    public static Integer[] vowelCounter(String input) {
+        Map<String, Integer> vowels = new HashMap<>();
+        vowels.put("a", 0);
+        vowels.put("e", 0);
+        vowels.put("i", 0);
+        vowels.put("o", 0);
+        vowels.put("u", 0);
+        String[] splitSentance = input.split(" ");
+        for (String word : splitSentance) {
+            String[] splitWord = word.split("");
+            for (String letter : splitWord) {
+                if (vowels.containsKey(letter)) {
+                    // increment by 1 if appears
+                    vowels.put(letter, vowels.get(letter) + 1);
+                }
+            }
+        }
+        // now make result array
+        return new Integer[] { vowels.get("a"), vowels.get("e"), vowels.get("i"), vowels.get("o"), vowels.get("u") };
+    }
+
+    public static Integer[] moveZeros(Integer[] inputArray) {
+        // get non zero elements and number of zeros
+        // create new arr w elements and then add num of zeros
+        Integer numZeros = 0;
+        Integer[] newArray = new Integer[inputArray.length];
+        Arrays.fill(newArray, 0);
+        Integer newArrIndex = 0;
+        for (int i = 0; i < inputArray.length; i++) {
+            if (inputArray[i] == 0) {
+                numZeros++;
+            } else {
+                newArray[newArrIndex] = inputArray[i];
+                newArrIndex++;
+            }
+        }
+        return newArray;
     }
 
 }

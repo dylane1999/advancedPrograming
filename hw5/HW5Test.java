@@ -65,6 +65,51 @@ public class HW5Test {
         assertTrue(actualResult);
     }
 
+
+    public static void test_vowelCounter_happyPath() {
+        String input = "i think, therefore i am";
+        Integer[] expArray = new Integer[]{1, 3, 3, 1, 0};
+        Integer[] actualResult = Homework5.vowelCounter(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+    public static void test_vowelCounter_noVowels() {
+        String input = "shhhrrt vbc wdcbq";
+        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] actualResult = Homework5.vowelCounter(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+    public static void test_vowelCounter_emptyInput() {
+        String input = "";
+        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] actualResult = Homework5.vowelCounter(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+    public static void test_moveZeros_happyPath() {
+        Integer[] input = new Integer[]{0,0,1,0,3,0,5,0,6};
+        Integer[] expArray = new Integer[]{1,3,5, 6, 0, 0, 0, 0, 0};
+        Integer[] actualResult = Homework5.moveZeros(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+    public static void test_moveZeros_noZeros() {
+        Integer[] input = new Integer[]{4,5,1,5,3,5,5,40,6};
+        Integer[] expArray = new Integer[]{4,5,1,5,3,5,5,40,6};
+        Integer[] actualResult = Homework5.moveZeros(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+    public static void test_moveZeros_onlyZeros() {
+        Integer[] input = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] actualResult = Homework5.moveZeros(input);
+        assertArrayEquals(expArray, actualResult);
+    }
+
+
+
     public static void main(String[] args) {
         // reverse nums tests
         test_reverseNumbers_happyPath();
@@ -78,6 +123,15 @@ public class HW5Test {
         test_usernameChecker_spaceInvalid();
         test_usernameChecker_emptyUsername();
         test_usernameChecker_happyPath();
+        // vowel counter
+        test_vowelCounter_happyPath();
+        test_vowelCounter_noVowels();
+        test_vowelCounter_emptyInput();
+        // move zeros
+        test_moveZeros_happyPath();
+        test_moveZeros_noZeros();
+        test_moveZeros_onlyZeros();
+        
 
         System.out.println("----- TESTS COMPLETE -----");
     }
