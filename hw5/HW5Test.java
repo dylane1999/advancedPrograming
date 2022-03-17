@@ -108,6 +108,46 @@ public class HW5Test {
         assertArrayEquals(expArray, actualResult);
     }
 
+    public static void test_matchParens_happyPath() {
+        String input = "()()(())";
+        boolean actualResult = Homework5.matchParens(input);
+        assertTrue(actualResult);
+    }
+
+    public static void test_matchParens_invalidParens() {
+        String input = "()()(()))))";
+        boolean actualResult = Homework5.matchParens(input);
+        assertFalse(actualResult);
+    }
+
+    public static void test_matchParens_noParensInput() {
+        String input = "hello wold";
+        boolean actualResult = Homework5.matchParens(input);
+        assertTrue(actualResult);
+    }
+
+    public static void test_countDiff_happyPath(){
+        Integer[] input = new Integer[]{4, 1, -2, 94, 3, 35, -4, -100};
+        Integer expResult = 243;
+        Integer actualResult = Homework5.countDiff(input);
+        assertEquals(expResult, actualResult);
+    }
+
+    public static void test_countDiff_noNegative(){
+        Integer[] input = new Integer[]{4, 1, 94, 3, 35};
+        Integer expResult = 137;
+        Integer actualResult = Homework5.countDiff(input);
+        assertEquals(expResult, actualResult);
+    }
+
+    public static void test_countDiff_allNegative(){
+        Integer[] input = new Integer[]{ -4, -100};
+        Integer expResult = 104;
+        Integer actualResult = Homework5.countDiff(input);
+        assertEquals(expResult, actualResult);
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -131,7 +171,14 @@ public class HW5Test {
         test_moveZeros_happyPath();
         test_moveZeros_noZeros();
         test_moveZeros_onlyZeros();
-        
+        // match Parens
+        test_matchParens_happyPath();
+        test_matchParens_invalidParens();
+        test_matchParens_noParensInput();
+        // count diff
+        test_countDiff_happyPath();
+        test_countDiff_noNegative();
+        test_countDiff_allNegative();
 
         System.out.println("----- TESTS COMPLETE -----");
     }
