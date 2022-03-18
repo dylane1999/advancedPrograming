@@ -147,6 +147,23 @@ public class HW5Test {
         assertEquals(expResult, actualResult);
     }
 
+    public static void test_findDupes_noDupes(){
+        Integer[] input = new Integer[]{ -4, -100};
+        Integer expResult = 104;
+        Homework5.findDupes(input);
+    }
+
+    public static void test_findDupes_happyPath(){
+        Integer[] input = new Integer[]{ -4, -100, -4};
+        Integer expResult = 104;
+        Homework5.findDupes(input);
+    }
+
+
+    
+
+    
+
 
 
 
@@ -179,6 +196,9 @@ public class HW5Test {
         test_countDiff_happyPath();
         test_countDiff_noNegative();
         test_countDiff_allNegative();
+        //findDupes
+        test_findDupes_noDupes();
+        test_findDupes_happyPath();
 
         System.out.println("----- TESTS COMPLETE -----");
     }

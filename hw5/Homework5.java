@@ -3,8 +3,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 public class Homework5 {
@@ -113,16 +115,16 @@ public class Homework5 {
         return newArray;
     }
 
-    public static boolean matchParens(String input){
-        // should create a stack of open parens and when we reach a close paren pop one off the stack
-        // if the leftover amount is > 0 then it is not valid 
+    public static boolean matchParens(String input) {
+        // should create a stack of open parens and when we reach a close paren pop one
+        // off the stack
+        // if the leftover amount is > 0 then it is not valid
         Stack<Character> parens = new Stack<>();
         for (int i = 0; i < input.length(); i++) {
             Character currentCharacter = input.charAt(i);
             if (currentCharacter.equals('(')) {
                 parens.push('(');
-            }
-            else if (currentCharacter.equals(')')) {
+            } else if (currentCharacter.equals(')')) {
                 if (parens.size() == 0) {
                     return false;
                 }
@@ -132,24 +134,37 @@ public class Homework5 {
         return parens.isEmpty();
     }
 
-    // returns the differences between the sum of all positive numbers and the sum of all negative numbers. 
-    public static Integer countDiff(Integer[] inputArray){
+    // returns the differences between the sum of all positive numbers and the sum
+    // of all negative numbers.
+    public static Integer countDiff(Integer[] inputArray) {
         // get positive numbers
         Integer positiveSum = 0;
         Integer negativeSum = 0;
         for (int i = 0; i < inputArray.length; i++) {
             if (inputArray[i] < 0) {
                 negativeSum += inputArray[i];
-            }
-            else{
+            } else {
                 positiveSum += inputArray[i];
             }
 
-            
         }
-        // get negative numbers 
+        // get negative numbers
         return positiveSum - negativeSum;
     }
+
+    public static void findDupes(Integer[] inputArr) {
+        // print duplicates
+        Set<Integer> dupes = new HashSet<>();
+        for (Integer integer : inputArr) {
+            if (dupes.contains(integer)) {
+                System.out.println(integer);
+            } else {
+                dupes.add(integer);
+            }
+        }
+
+    }
+    
 
 
 
