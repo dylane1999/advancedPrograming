@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.DynamicContainer.dynamicContainer;
 
 public class HW5Test {
 
@@ -159,6 +160,19 @@ public class HW5Test {
         Homework5.findDupes(input);
     }
 
+    public static void test_findAllPairs_happyPath() {
+        Integer[] input = new Integer[]{2, 7, 4, -5, 11, 5, 20};
+        Homework5.findAllPairs(input, 15);
+    }
+
+    public static void test_findAllPairs_noMatches() {
+        Integer[] input = new Integer[]{2, 7, 4, -5, 11, 5, 20};
+        Homework5.findAllPairs(input, -100);
+    }
+
+    
+
+
 
     
 
@@ -199,6 +213,9 @@ public class HW5Test {
         //findDupes
         test_findDupes_noDupes();
         test_findDupes_happyPath();
+        // find All Pairs
+        test_findAllPairs_happyPath();
+        // OpenATab.OpenTab();
 
         System.out.println("----- TESTS COMPLETE -----");
     }

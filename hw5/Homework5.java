@@ -140,16 +140,15 @@ public class Homework5 {
         // get positive numbers
         Integer positiveSum = 0;
         Integer negativeSum = 0;
-        for (int i = 0; i < inputArray.length; i++) {
-            if (inputArray[i] < 0) {
-                negativeSum += inputArray[i];
+        for (Integer integer : inputArray) {
+            if (integer < 0) {
+                negativeSum += integer;
             } else {
-                positiveSum += inputArray[i];
+                positiveSum += integer;
             }
-
         }
-        // get negative numbers
         return positiveSum - negativeSum;
+
     }
 
     public static void findDupes(Integer[] inputArr) {
@@ -164,8 +163,18 @@ public class Homework5 {
         }
 
     }
-    
 
-
+    public static void findAllPairs(Integer[] array, Integer target) {
+        //prints all pairs whose sum equals the target number 
+        // for each try each number after
+        for (int i = 0; i < array.length; i++) {
+            for (int j = i+1; j < array.length; j++) {
+                if (array[i] + array[j] == target) {
+                    System.out.println(String.format("%d + %d = %d", array[i], array[j], target));
+                }
+            }
+        }
+        
+    }
 
 }
