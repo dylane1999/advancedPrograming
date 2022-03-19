@@ -215,7 +215,11 @@ public class HW5Test {
         test_findDupes_happyPath();
         // find All Pairs
         test_findAllPairs_happyPath();
+
+        // Uncomment below to run open tab, hailstone, and math party 
         // OpenATab.OpenTab();
+        // Hailstone.hailstone();
+        // MathParty.mathParty();
 
         System.out.println("----- TESTS COMPLETE -----");
     }
