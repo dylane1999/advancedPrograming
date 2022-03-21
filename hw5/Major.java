@@ -29,7 +29,7 @@ public class Major {
     public boolean addCourse(Course course) {
 
         for (int i = 0; i < requiredCourses.length; i++) {
-            if (requiredCourses[i].equals(course)) {
+        if (requiredCourses[i] != null && requiredCourses[i].equals(course)) {
                 return false;
             }
             if (requiredCourses[i] == null) {

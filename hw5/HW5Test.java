@@ -66,45 +66,44 @@ public class HW5Test {
         assertTrue(actualResult);
     }
 
-
     public static void test_vowelCounter_happyPath() {
         String input = "i think, therefore i am";
-        Integer[] expArray = new Integer[]{1, 3, 3, 1, 0};
+        Integer[] expArray = new Integer[] { 1, 3, 3, 1, 0 };
         Integer[] actualResult = Homework5.vowelCounter(input);
         assertArrayEquals(expArray, actualResult);
     }
 
     public static void test_vowelCounter_noVowels() {
         String input = "shhhrrt vbc wdcbq";
-        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] expArray = new Integer[] { 0, 0, 0, 0, 0 };
         Integer[] actualResult = Homework5.vowelCounter(input);
         assertArrayEquals(expArray, actualResult);
     }
 
     public static void test_vowelCounter_emptyInput() {
         String input = "";
-        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] expArray = new Integer[] { 0, 0, 0, 0, 0 };
         Integer[] actualResult = Homework5.vowelCounter(input);
         assertArrayEquals(expArray, actualResult);
     }
 
     public static void test_moveZeros_happyPath() {
-        Integer[] input = new Integer[]{0,0,1,0,3,0,5,0,6};
-        Integer[] expArray = new Integer[]{1,3,5, 6, 0, 0, 0, 0, 0};
+        Integer[] input = new Integer[] { 0, 0, 1, 0, 3, 0, 5, 0, 6 };
+        Integer[] expArray = new Integer[] { 1, 3, 5, 6, 0, 0, 0, 0, 0 };
         Integer[] actualResult = Homework5.moveZeros(input);
         assertArrayEquals(expArray, actualResult);
     }
 
     public static void test_moveZeros_noZeros() {
-        Integer[] input = new Integer[]{4,5,1,5,3,5,5,40,6};
-        Integer[] expArray = new Integer[]{4,5,1,5,3,5,5,40,6};
+        Integer[] input = new Integer[] { 4, 5, 1, 5, 3, 5, 5, 40, 6 };
+        Integer[] expArray = new Integer[] { 4, 5, 1, 5, 3, 5, 5, 40, 6 };
         Integer[] actualResult = Homework5.moveZeros(input);
         assertArrayEquals(expArray, actualResult);
     }
 
     public static void test_moveZeros_onlyZeros() {
-        Integer[] input = new Integer[]{0, 0, 0, 0, 0};
-        Integer[] expArray = new Integer[]{0, 0, 0, 0, 0};
+        Integer[] input = new Integer[] { 0, 0, 0, 0, 0 };
+        Integer[] expArray = new Integer[] { 0, 0, 0, 0, 0 };
         Integer[] actualResult = Homework5.moveZeros(input);
         assertArrayEquals(expArray, actualResult);
     }
@@ -127,59 +126,99 @@ public class HW5Test {
         assertTrue(actualResult);
     }
 
-    public static void test_countDiff_happyPath(){
-        Integer[] input = new Integer[]{4, 1, -2, 94, 3, 35, -4, -100};
+    public static void test_countDiff_happyPath() {
+        Integer[] input = new Integer[] { 4, 1, -2, 94, 3, 35, -4, -100 };
         Integer expResult = 243;
         Integer actualResult = Homework5.countDiff(input);
         assertEquals(expResult, actualResult);
     }
 
-    public static void test_countDiff_noNegative(){
-        Integer[] input = new Integer[]{4, 1, 94, 3, 35};
+    public static void test_countDiff_noNegative() {
+        Integer[] input = new Integer[] { 4, 1, 94, 3, 35 };
         Integer expResult = 137;
         Integer actualResult = Homework5.countDiff(input);
         assertEquals(expResult, actualResult);
     }
 
-    public static void test_countDiff_allNegative(){
-        Integer[] input = new Integer[]{ -4, -100};
+    public static void test_countDiff_allNegative() {
+        Integer[] input = new Integer[] { -4, -100 };
         Integer expResult = 104;
         Integer actualResult = Homework5.countDiff(input);
         assertEquals(expResult, actualResult);
     }
 
-    public static void test_findDupes_noDupes(){
-        Integer[] input = new Integer[]{ -4, -100};
+    public static void test_findDupes_noDupes() {
+        Integer[] input = new Integer[] { -4, -100 };
         Integer expResult = 104;
         Homework5.findDupes(input);
     }
 
-    public static void test_findDupes_happyPath(){
-        Integer[] input = new Integer[]{ -4, -100, -4};
+    public static void test_findDupes_happyPath() {
+        Integer[] input = new Integer[] { -4, -100, -4 };
         Integer expResult = 104;
         Homework5.findDupes(input);
     }
 
     public static void test_findAllPairs_happyPath() {
-        Integer[] input = new Integer[]{2, 7, 4, -5, 11, 5, 20};
+        Integer[] input = new Integer[] { 2, 7, 4, -5, 11, 5, 20 };
         Homework5.findAllPairs(input, 15);
     }
 
     public static void test_findAllPairs_noMatches() {
-        Integer[] input = new Integer[]{2, 7, 4, -5, 11, 5, 20};
+        Integer[] input = new Integer[] { 2, 7, 4, -5, 11, 5, 20 };
         Homework5.findAllPairs(input, -100);
     }
 
-    
+    // canYouGraduate test Studetn
 
+    public static void test_student_canYouGraduate_happyPath() {
+        Course dataStructures = new Course("Computer Science", "CS117", "Data Structures");
+        Major computerMajor = new Major("computer science", 1);
+        computerMajor.addCourse(dataStructures);
+        Student student = new Student("dylan", "edwaeds");
+        student.declareMajor(computerMajor);
+        student.updateGpa(4.0);
+        student.register(dataStructures);
+        boolean canGrad = student.canYouGraduate();
+        assertTrue(canGrad);
 
+    }
 
-    
+    public static void test_student_canYouGraduate_notMet() {
+        Course dataStructures = new Course("Computer Science", "CS117", "Data Structures");
+        Major computerMajor = new Major("computer science", 1);
+        computerMajor.addCourse(dataStructures);
+        Student student = new Student("dylan", "edwaeds");
+        student.updateGpa(4.0);
+        student.declareMajor(computerMajor);
+        boolean canGrad = student.canYouGraduate();
+        assertFalse(canGrad);
+    }
 
-    
+    // register student
 
+    // student satisfy major
+    public static void test_student_satisfyMajor_satisfiesMajor() {
+        Course dataStructures = new Course("Computer Science", "CS117", "Data Structures");
+        Major computerMajor = new Major("computer science", 1);
+        computerMajor.addCourse(dataStructures);
+        Student student = new Student("dylan", "edwaeds");
+        student.updateGpa(4.0);
+        student.declareMajor(computerMajor);
+        boolean satisfies = student.satisfyMajor(dataStructures.courseName);
+        assertTrue(satisfies);
+    }
 
-
+    public static void test_student_satisfyMajor_doesNotSatisfyMajor() {
+        Course dataStructures = new Course("Computer Science", "CS117", "Data Structures");
+        Major computerMajor = new Major("computer science", 1);
+        computerMajor.addCourse(dataStructures);
+        Student student = new Student("dylan", "edwaeds");
+        student.updateGpa(4.0);
+        student.declareMajor(computerMajor);
+        boolean satisfies = student.satisfyMajor("cs class 7");
+        assertFalse(satisfies);
+    }
 
     public static void main(String[] args) {
         // reverse nums tests
@@ -210,16 +249,23 @@ public class HW5Test {
         test_countDiff_happyPath();
         test_countDiff_noNegative();
         test_countDiff_allNegative();
-        //findDupes
+        // findDupes
         test_findDupes_noDupes();
         test_findDupes_happyPath();
         // find All Pairs
         test_findAllPairs_happyPath();
 
-        // Uncomment below to run open tab, hailstone, and math party 
+        // Uncomment below to run open tab, hailstone, and math party
         // OpenATab.OpenTab();
         // Hailstone.hailstone();
         // MathParty.mathParty();
+
+        // student/course/major
+        test_student_canYouGraduate_happyPath();
+        test_student_canYouGraduate_notMet();
+        test_student_satisfyMajor_satisfiesMajor();
+        test_student_satisfyMajor_doesNotSatisfyMajor();
+        
 
         System.out.println("----- TESTS COMPLETE -----");
     }
