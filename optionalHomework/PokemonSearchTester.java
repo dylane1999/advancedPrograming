@@ -72,6 +72,12 @@ public class PokemonSearchTester {
         assertTrue(pokemonList.isEmpty());
     }
 
+    public static void test_searchByStats_catchGreaterThan2(PokemonSearch pokemonSearch) {
+        List<Pokemon> pokemonList = pokemonSearch.searchByStats("catchRate", ">=", 2);
+        // there are 25 pokemon with catch rate of 2% or below
+        assertEquals(25, pokemonList.size());
+    }
+
     public static void test_searchByquickMove_happyPath(PokemonSearch pokemonSearch) {
         Pokemon expectedPokemon = new Pokemon(1, "Bulbasaur", Arrays.asList("Grass", "Poison"), 128, 118, 111, 20.0,
                 10.0, 25, Arrays.asList("Vine Whip", "Tackle"),
@@ -108,7 +114,7 @@ public class PokemonSearchTester {
 
     public static void test_candiesToEvolve_nonexistantPokemon(PokemonSearch pokemonSearch) {
         // throw error when pokemon name does not exist
-        assertThrows(IllegalArgumentException.class, () -> pokemonSearch.candiesForEvolving("FAKE"));
+        assertEquals(-1, pokemonSearch.candiesForEvolving("FAKE"));
     }
 
     public static void main(String[] args) throws ParseException, IOException {
@@ -173,6 +179,7 @@ public class PokemonSearchTester {
         // test searchByStats
         test_searchByStats_happyPath(pokemonSearch);
         test_searchByStats_negativeStat(pokemonSearch);
+        test_searchByStats_catchGreaterThan2(pokemonSearch);
 
         // test searchByQuickMove
         test_searchByquickMove_happyPath(pokemonSearch);

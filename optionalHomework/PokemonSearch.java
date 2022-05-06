@@ -53,7 +53,22 @@ public class PokemonSearch {
                         pokeList.add(pokemon);
                     }
                 }
-            } else if (operator.equals("<")) {
+            } 
+            else if (operator.equals("<=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (pokemon.getCatchRate() != null && percentage <= pokemon.getCatchRate()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals(">=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (pokemon.getCatchRate() != null && percentage >= pokemon.getCatchRate()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals("<")) {
                 for (Pokemon pokemon : allPokemon) {
                     if (pokemon.getCatchRate() != null && percentage < pokemon.getCatchRate()) {
                         pokeList.add(pokemon);
@@ -75,7 +90,21 @@ public class PokemonSearch {
                         pokeList.add(pokemon);
                     }
                 }
-            } else if (operator.equals("<")) {
+                
+            }  else if (operator.equals("<=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage <= pokemon.getFleeRate()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals(">=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage >= pokemon.getCatchRate()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }else if (operator.equals("<")) {
                 for (Pokemon pokemon : allPokemon) {
                     if (percentage < pokemon.getFleeRate()) {
                         pokeList.add(pokemon);
@@ -104,7 +133,21 @@ public class PokemonSearch {
                         pokeList.add(pokemon);
                     }
                 }
-            } else if (operator.equals("==")) {
+            } 
+            else if (operator.equals("<=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage <= pokemon.getAttack()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals(">=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage >= pokemon.getAttack()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }else if (operator.equals("==")) {
                 for (Pokemon pokemon : allPokemon) {
                     if (percentage == pokemon.getAttack()) {
                         pokeList.add(pokemon);
@@ -126,7 +169,20 @@ public class PokemonSearch {
                         pokeList.add(pokemon);
                     }
                 }
-            } else if (operator.equals("==")) {
+            } else if (operator.equals("<=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage <= pokemon.getDefense()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals(">=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (percentage >= pokemon.getDefense()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }else if (operator.equals("==")) {
                 for (Pokemon pokemon : allPokemon) {
                     if (percentage == pokemon.getDefense()) {
                         pokeList.add(pokemon);
@@ -146,7 +202,20 @@ public class PokemonSearch {
                         pokeList.add(pokemon);
                     }
                 }
-            } else if (operator.equals("==")) {
+            } else if (operator.equals("<=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (pokemon.getCandy() != null && percentage <= pokemon.getCandy()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }
+            else if (operator.equals(">=")) {
+                for (Pokemon pokemon : allPokemon) {
+                    if (pokemon.getCandy() != null && percentage >= pokemon.getCandy()) {
+                        pokeList.add(pokemon);
+                    }
+                }
+            }else if (operator.equals("==")) {
                 for (Pokemon pokemon : allPokemon) {
                     if (pokemon.getCandy() != null && percentage == pokemon.getCandy()) {
                         pokeList.add(pokemon);
