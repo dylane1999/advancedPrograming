@@ -128,15 +128,26 @@ public class PokemonSearchTester {
         List<Map> map = (List<Map>) parser.parse(json, containerFactory);
         List<Pokemon> allPokemon = new ArrayList<>();
         for (Map jsonPokemon : map) {
-            Integer dex = (Integer) jsonPokemon.get("dex");
+            Integer dex = Integer.parseInt(String.valueOf(jsonPokemon.get("dex")));
             String name = (String) jsonPokemon.get("name");
-            Double fleeRate = (Double) jsonPokemon.get("fleeRate");
-            Double catchRate = (Double) jsonPokemon.get("catchRate");
-            Integer attack = (Integer) jsonPokemon.get("attack");
-            Integer defense = (Integer) jsonPokemon.get("defense");
-            Integer HP = (Integer) jsonPokemon.get("HP");
-            Integer candy = (Integer) jsonPokemon.get("candy");
-            List<String> chargedMoves = (List<String>) jsonPokemon.get("chargedMoves");
+            Double fleeRate = Double.parseDouble(String.valueOf(jsonPokemon.get("fleeRate")).replace("%", ""));
+            Double catchRate;
+            if (jsonPokemon.get("catchRate") == null) {
+                catchRate = null;
+            } else {
+                catchRate = Double.parseDouble(String.valueOf(jsonPokemon.get("catchRate")).replace("%", ""));
+            }
+            Integer attack = Integer.parseInt(String.valueOf(jsonPokemon.get("attack")));
+            Integer defense = Integer.parseInt(String.valueOf(jsonPokemon.get("defense")));
+            Integer HP = Integer.parseInt(String.valueOf(jsonPokemon.get("HP")));
+            Integer candy;
+            if(jsonPokemon.get("candy") == null){
+                candy = null;
+            }
+            else{
+                candy = Integer.parseInt(String.valueOf(jsonPokemon.get("candy")));
+            }
+            List<String> chargedMoves = (List<String>) jsonPokemon.get("chargeMoves");
             List<String> fastMoves = (List<String>) jsonPokemon.get("fastMoves");
             List<String> types = (List<String>) jsonPokemon.get("types");
             Pokemon newPokemon = new Pokemon(dex, name, types, attack, defense, HP, catchRate, fleeRate, candy,
@@ -174,6 +185,8 @@ public class PokemonSearchTester {
         // test candiesForEvolving
         test_candiesToEvolve_happyPath(pokemonSearch);
         test_candiesToEvolve_nonexistantPokemon(pokemonSearch);
+
+        System.out.println("------ TESTS COMPLETE ------");
 
     }
 
